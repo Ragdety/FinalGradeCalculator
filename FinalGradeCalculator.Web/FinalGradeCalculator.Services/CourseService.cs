@@ -1,5 +1,6 @@
 ﻿using FinalGradeCalculator.Data;
 using FinalGradeCalculator.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,24 +15,36 @@ namespace FinalGradeCalculator.Services
             _db = db;
         }
 
-        public Task AddCourse(Course course)
+        public async Task AddCourse(Course course)
         {
-            throw new NotImplementedException();
+            await _db.AddAsync(course);
+            await _db.SaveChangesAsync();
         }
 
-        public Task DeleteCourse(int courseId)
+        public async Task DeleteCourse(int courseId)
         {
-            throw new NotImplementedException();
+            var courseToDelete = await _db.Courses.FindAsync(courseId);
+            if(courseToDelete != null)
+            {
+                _db.Remove(courseToDelete);
+                await _db.SaveChangesAsync();
+            }
+
+            throw new InvalidOperationException(
+                "Cannot delete book that doesn't exist");
         }
 
-        public Task<IList<Course>> GetAllCourses()
+        public async Task<IList<Course>> GetAllCourses()
         {
-            throw new NotImplementedException();
+            return await _db.Courses.ToListAsync();
         }
 
-        public Task<Course> GetCourse(int courseId)
+        public async Task<Course> GetCourse(int courseId)
         {
-            throw new NotImplementedException();
+            var course = await _db.Courses.FirstOrDefaultAsync(course => 
+                    course.Id == courseId);
+
+            return await _db.Courses.FindAsync(course);
         }
     }
 }
