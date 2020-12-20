@@ -31,7 +31,10 @@ namespace FinalGradeCalculator.Web
 
             services.AddDbContext<FinalGradeCalculatorDbContext>(option => {
                 option.EnableDetailedErrors();
-                option.UseSqlServer(Configuration.GetConnectionString("finalGradeCalculator.dev"));
+                option.UseSqlServer(
+                    Configuration.GetConnectionString("finalGradeCalculator.dev"),
+                    b => b.MigrationsAssembly("FinalGradeCalculator.Web")
+                );
             });
         }
 
