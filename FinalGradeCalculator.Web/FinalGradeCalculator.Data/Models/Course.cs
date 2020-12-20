@@ -15,5 +15,7 @@ namespace FinalGradeCalculator.Data.Models
         public string Instructor { get; set; }
         public double FinalGrade { get; set; }
         public ICollection<GradedItem> GradedItems { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
     }
 }
