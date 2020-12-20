@@ -1,0 +1,9 @@
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Services.deps.json
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Services.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Services.pdb
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Services.csprojAssemblyReference.cache
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Services.AssemblyInfoInputs.cache
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Services.AssemblyInfo.cs
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Services.csproj.CoreCompileInputs.cache
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Services.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Services\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Services.pdb

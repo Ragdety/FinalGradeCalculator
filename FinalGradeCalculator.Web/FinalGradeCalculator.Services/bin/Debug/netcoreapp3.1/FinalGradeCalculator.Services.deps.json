@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "FinalGradeCalculator.Services/1.0.0": {
+        "runtime": {
+          "FinalGradeCalculator.Services.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FinalGradeCalculator.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
