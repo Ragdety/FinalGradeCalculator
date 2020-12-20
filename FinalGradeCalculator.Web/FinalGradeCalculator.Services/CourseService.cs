@@ -1,27 +1,35 @@
-﻿using FinalGradeCalculator.Data.Models;
+﻿using FinalGradeCalculator.Data;
+using FinalGradeCalculator.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FinalGradeCalculator.Services
 {
     public class CourseService : ICourseService
     {
-        public void AddCourse(Course course)
+        private readonly FinalGradeCalculatorDbContext _db;
+        public CourseService(FinalGradeCalculatorDbContext db)
+        {
+            _db = db;
+        }
+
+        public Task AddCourse(Course course)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteCourse(int courseId)
+        public Task DeleteCourse(int courseId)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Course> GetAllCourses()
+        public Task<IList<Course>> GetAllCourses()
         {
             throw new NotImplementedException();
         }
 
-        public Course GetCourse(int courseId)
+        public Task<Course> GetCourse(int courseId)
         {
             throw new NotImplementedException();
         }
