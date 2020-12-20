@@ -34,3 +34,8 @@ C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\Fina
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Data.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Data.pdb
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Web.csproj.CoreCompileInputs.cache
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Web.MvcApplicationPartsAssemblyInfo.cache
