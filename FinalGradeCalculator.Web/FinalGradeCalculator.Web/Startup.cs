@@ -29,9 +29,10 @@ namespace FinalGradeCalculator.Web
         {
             services.AddControllers();
 
-            services.AddDbContext<FinalGradeCalculatorDbContext>(option =>
-                option.UseSqlServer(Configuration.GetConnectionString("finalGradeCalculator.dev"))
-            );
+            services.AddDbContext<FinalGradeCalculatorDbContext>(option => {
+                option.EnableDetailedErrors();
+                option.UseSqlServer(Configuration.GetConnectionString("finalGradeCalculator.dev"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
