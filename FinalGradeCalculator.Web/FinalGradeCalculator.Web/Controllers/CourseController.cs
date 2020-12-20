@@ -9,11 +9,11 @@ namespace FinalGradeCalculator.Web.Controllers
 {
     [Route("/api/classes")]
     [ApiController]
-    public class ClassController : ControllerBase
+    public class CourseController : ControllerBase
     {
-        private readonly ILogger<ClassController> _logger;
+        private readonly ILogger<CourseController> _logger;
 
-        public ClassController(ILogger<ClassController> logger)
+        public CourseController(ILogger<CourseController> logger)
         {
             _logger = logger;
         }
