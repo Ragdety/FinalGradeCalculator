@@ -1,6 +1,7 @@
 ﻿namespace FinalGradeCalculator.Services
 {
-    public interface IClassService
+    public interface ICourseService
     {
+        public void AddClass(Course course);
     }
 }

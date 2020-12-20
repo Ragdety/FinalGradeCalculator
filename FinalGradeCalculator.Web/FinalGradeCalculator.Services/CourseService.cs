@@ -2,7 +2,7 @@
 
 namespace FinalGradeCalculator.Services
 {
-    public class ClassService : IClassService
+    public class CourseService : ICourseService
     {
 
     }
