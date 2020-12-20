@@ -28,6 +28,7 @@ namespace FinalGradeCalculator.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddDbContext<FinalGradeCalculatorDbContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("finalGradeCalculator.dev"))
             );
