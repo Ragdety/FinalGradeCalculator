@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace FinalGradeCalculator.Web.Controllers
 {
-    [Route("/api/classes")]
+    [Route("/api/courses")]
     [ApiController]
     public class CourseController : ControllerBase
     {
