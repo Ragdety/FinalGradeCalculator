@@ -61,5 +61,12 @@ namespace FinalGradeCalculator.Web.Controllers
             await _courseService.AddCourse(course);
             return Ok($"Course added: {course.Name}");
         }
+
+        [HttpDelete("api/courses/{id}")]
+        public async Task<IActionResult> DeleteCourse(int id)
+        {
+            await _courseService.DeleteCourse(id);
+            return Ok($"Course deleted");
+        }
     }
 }
