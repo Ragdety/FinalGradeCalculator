@@ -17,7 +17,7 @@ namespace FinalGradeCalculator.Services
 
         public async Task AddCourse(Course course)
         {
-            await _db.AddAsync(course);
+            await _db.Courses.AddAsync(course);
             await _db.SaveChangesAsync();
         }
 
@@ -26,7 +26,7 @@ namespace FinalGradeCalculator.Services
             var courseToDelete = await _db.Courses.FindAsync(courseId);
             if(courseToDelete != null)
             {
-                _db.Remove(courseToDelete);
+                _db.Courses.Remove(courseToDelete);
                 await _db.SaveChangesAsync();
             }
             else
