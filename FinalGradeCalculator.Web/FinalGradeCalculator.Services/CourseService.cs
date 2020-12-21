@@ -41,10 +41,8 @@ namespace FinalGradeCalculator.Services
 
         public async Task<Course> GetCourse(int courseId)
         {
-            var course = await _db.Courses.FirstOrDefaultAsync(course => 
-                    course.Id == courseId);
-
-            return await _db.Courses.FindAsync(course);
+            var course = await _db.Courses.FindAsync(courseId);
+            return course;
         }
     }
 }
