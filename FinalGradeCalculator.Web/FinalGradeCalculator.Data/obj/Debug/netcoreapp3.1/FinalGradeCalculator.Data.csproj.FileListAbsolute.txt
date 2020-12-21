@@ -8,5 +8,5 @@ C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\Fina
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Data\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Data.pdb
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Data\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Data.runtimeconfig.json
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Data\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Data.runtimeconfig.dev.json
-C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Data\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Data.csproj.CoreCompileInputs.cache
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Data\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Data.genruntimeconfig.cache
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Data\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Data.csproj.CoreCompileInputs.cache
