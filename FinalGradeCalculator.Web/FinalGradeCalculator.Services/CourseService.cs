@@ -29,9 +29,11 @@ namespace FinalGradeCalculator.Services
                 _db.Remove(courseToDelete);
                 await _db.SaveChangesAsync();
             }
-
-            throw new InvalidOperationException(
-                "Cannot delete course that doesn't exist");
+            else
+            {
+                throw new InvalidOperationException(
+                    "Cannot delete course that doesn't exist");
+            }
         }
 
         public async Task<IList<Course>> GetAllCourses()
