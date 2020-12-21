@@ -31,7 +31,7 @@ namespace FinalGradeCalculator.Services
             }
 
             throw new InvalidOperationException(
-                "Cannot delete book that doesn't exist");
+                "Cannot delete course that doesn't exist");
         }
 
         public async Task<IList<Course>> GetAllCourses()
