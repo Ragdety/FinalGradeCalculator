@@ -53,13 +53,13 @@ namespace FinalGradeCalculator.Web.Controllers
                 Name = courseRequest.Name,
                 Instructor = courseRequest.Instructor,
                 FinalGrade = null,
-                GradedItems = null,
+                GradedItems = courseRequest.GradeItems,
                 CreatedOn = now,
                 UpdatedOn = now
             };
 
             await _courseService.AddCourse(course);
-            return Ok("Course added");
+            return Ok($"Course added: {course.Name}");
         }
     }
 }
