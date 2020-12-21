@@ -37,5 +37,11 @@ C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\Fina
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Data.dll
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Data.pdb
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Services.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\FinalGradeCalculator.Services.pdb
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Web.csproj.CoreCompileInputs.cache
 C:\Users\Ragdety\Desktop\Programming\Personal Projects\FinalGradeCalculator\FinalGradeCalculator.Web\FinalGradeCalculator.Web\obj\Debug\netcoreapp3.1\FinalGradeCalculator.Web.MvcApplicationPartsAssemblyInfo.cache

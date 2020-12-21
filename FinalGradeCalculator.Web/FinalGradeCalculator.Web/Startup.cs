@@ -42,6 +42,11 @@ namespace FinalGradeCalculator.Web
 
             //To make use of ICourseService
             services.AddScoped<ICourseService, CourseService>();
+
+            //To add AspNetCore.Mvc.NewtonsoftJson
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
