@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalGradeCalculator.Data.Models;
 using FinalGradeCalculator.Services;
+using FinalGradeCalculator.Web.CourseRequests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -40,6 +42,24 @@ namespace FinalGradeCalculator.Web.Controllers
                 return NotFound($"No course found with id {id}");
 
             return Ok(course);
+        }
+
+        [HttpPost("/api/courses/")]
+        public async Task<IActionResult> PostCourse([FromBody] NewCourseRequest courseRequest)
+        {
+            var now = DateTime.UtcNow;
+            var course = new Course
+            {
+                Name = courseRequest.Name,
+                Instructor = courseRequest.Instructor,
+                FinalGrade = null,
+                GradedItems = null,
+                CreatedOn = now,
+                UpdatedOn = now
+            };
+
+            await _courseService.AddCourse(course);
+            return Ok("Course added");
         }
     }
 }
