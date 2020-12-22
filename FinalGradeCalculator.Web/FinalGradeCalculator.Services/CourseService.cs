@@ -17,6 +17,14 @@ namespace FinalGradeCalculator.Services
 
         public async Task AddCourse(Course course)
         {
+            if (course.GradedItems.Count != 0)
+            {
+                foreach (GradedItem gradedItem in course.GradedItems)
+                {
+                    //To Update the GradedItems DB table as well
+                    await _db.GradedItems.AddAsync(gradedItem);
+                }
+            }
             await _db.Courses.AddAsync(course);
             await _db.SaveChangesAsync();
         }
