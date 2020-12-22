@@ -1,0 +1,9 @@
+Useful links that helped me through this project:
+
+https://www.learnentityframeworkcore.com/dbset/querying-data
+
+https://www.dotnetcurry.com/aspnet/1278/aspnet-webapi-pass-multiple-parameters-action-method
+
+https://stackoverflow.com/questions/21558277/entity-framework-retrieve-data-from-table-with-foreign-key
+
+https://docs.microsoft.com/en-us/ef/ef6/fundamentals/relationships
