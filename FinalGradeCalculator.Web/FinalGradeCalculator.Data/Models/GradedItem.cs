@@ -14,5 +14,6 @@ namespace FinalGradeCalculator.Data.Models
         public double Grade { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
+        public int CourseId { get; set; }
     }
 }
