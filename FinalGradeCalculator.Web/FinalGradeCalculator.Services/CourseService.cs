@@ -32,9 +32,14 @@ namespace FinalGradeCalculator.Services
 
         public async Task DeleteCourse(int courseId)
         {
-            var courseToDelete = await _db.Courses.FindAsync(courseId);
+            var courseToDelete = GetCourse(courseId).Result;
             if(courseToDelete != null)
             {
+                foreach (var gradedItem in courseToDelete.GradedItems)
+                {
+                    _db.GradedItems.Remove(gradedItem);
+                }
+
                 _db.Courses.Remove(courseToDelete);
                 await _db.SaveChangesAsync();
             }
