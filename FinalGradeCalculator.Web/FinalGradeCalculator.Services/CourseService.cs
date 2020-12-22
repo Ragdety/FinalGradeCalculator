@@ -3,6 +3,7 @@ using FinalGradeCalculator.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FinalGradeCalculator.Services
@@ -46,7 +47,16 @@ namespace FinalGradeCalculator.Services
 
         public async Task<IList<Course>> GetAllCourses()
         {
-            return await _db.Courses.ToListAsync();
+            IList<Course> coursesFromDb = await _db.Courses.ToListAsync();
+            
+            foreach (var course in coursesFromDb)
+            {
+                IQueryable<GradedItem> gradedItems = _db.GradedItems.Where(a => a.CourseId == course.Id);
+                course.GradedItems = await gradedItems.ToListAsync();
+            }
+
+            return coursesFromDb;
+            //return await _db.Courses.ToListAsync();
         }
 
         public async Task<Course> GetCourse(int courseId)
