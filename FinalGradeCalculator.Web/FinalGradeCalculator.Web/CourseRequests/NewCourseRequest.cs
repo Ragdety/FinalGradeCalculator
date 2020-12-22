@@ -10,6 +10,6 @@ namespace FinalGradeCalculator.Web.CourseRequests
     {
         public string Name { get; set; }
         public string Instructor { get; set; }
-        public ICollection<GradedItem> GradeItems { get; set; }
+        public ICollection<NewGradedItemRequest> GradeItems { get; set; }
     }
 }

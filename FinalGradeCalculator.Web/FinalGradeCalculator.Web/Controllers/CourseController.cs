@@ -45,42 +45,70 @@ namespace FinalGradeCalculator.Web.Controllers
             return Ok(course);
         }
 
-        //[HttpPost("/api/courses/")]
-        //public async Task<IActionResult> PostCourse([FromBody] JObject objData)
-        //{
-        //    ICollection<GradedItem> gradedItemsLst = new List<GradedItem>();
-
-        //    //Represents a Course
-        //    dynamic course = objData;
-
-        //    //Represents the Graded Items attribute
-        //    JArray gradedItemsJson = course.GradedItems;
-        //    //JObject gradedItems = course.GradedItems;
-
-        //    await _courseService.AddCourse(course);
-        //    return Ok($"Course added: {course.Name}");
-        //}
-
         [HttpPost("/api/courses/")]
-        public async Task<IActionResult> PostCourse([FromBody] NewCourseRequest courseRequest)
+        public async Task<IActionResult> PostCourse([FromBody] JObject objData)
         {
-            courseRequest.GradeItems = new List<GradedItem>();
-
-
             var now = DateTime.UtcNow;
-            var course = new Course
+
+            ICollection<NewGradedItemRequest> gradedItemsLstRequest = new List<NewGradedItemRequest>();
+            dynamic course = objData;
+            JArray gradedItemsJson = course.GradedItems;
+
+            foreach (var gradedItem in gradedItemsJson)
             {
-                Name = courseRequest.Name,
-                Instructor = courseRequest.Instructor,
-                FinalGrade = null,
-                GradedItems = courseRequest.GradeItems,
+                gradedItemsLstRequest.Add(gradedItem.ToObject<NewGradedItemRequest>());
+            }
+
+            ICollection<GradedItem> gradedItems = new List<GradedItem>();
+
+            foreach (var gradedItem in gradedItemsLstRequest)
+            {
+                var gradedItemModel = new GradedItem
+                {
+                    Name = gradedItem.Name,
+                    Grade = gradedItem.Grade,
+                    CreatedOn = now,
+                    UpdatedOn = now
+                };
+
+                gradedItems.Add(gradedItemModel);
+            }
+
+            var courseToAdd = new Course
+            {
+                Name = course.Name,
+                Instructor = course.Instructor,
+                FinalGrade = 100,
+                GradedItems = gradedItems,
                 CreatedOn = now,
                 UpdatedOn = now
             };
 
-            await _courseService.AddCourse(course);
-            return Ok($"Course added: {course.Name}");
+            await _courseService.AddCourse(courseToAdd);
+            return Ok($"Course added: {courseToAdd.Name}");
         }
+
+        //[HttpPost("/api/courses/")]
+        //public async Task<IActionResult> PostCourse([FromBody] NewCourseRequest courseRequest)
+        //{
+        //    courseRequest.GradeItems = new List<GradedItem>();
+
+
+
+        //    var now = DateTime.UtcNow;
+        //    var course = new Course
+        //    {
+        //        Name = courseRequest.Name,
+        //        Instructor = courseRequest.Instructor,
+        //        FinalGrade = null,
+        //        GradedItems = courseRequest.GradeItems,
+        //        CreatedOn = now,
+        //        UpdatedOn = now
+        //    };
+
+        //    await _courseService.AddCourse(course);
+        //    return Ok($"Course added: {course.Name}");
+        //}
 
         [HttpDelete("/api/courses/{id}")]
         public async Task<IActionResult> DeleteCourse(int id)
