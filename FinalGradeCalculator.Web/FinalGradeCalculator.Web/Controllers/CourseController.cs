@@ -78,7 +78,7 @@ namespace FinalGradeCalculator.Web.Controllers
             {
                 Name = course.Name,
                 Instructor = course.Instructor,
-                FinalGrade = 100,
+                FinalGrade = null,
                 GradedItems = gradedItems,
                 CreatedOn = now,
                 UpdatedOn = now
@@ -87,28 +87,6 @@ namespace FinalGradeCalculator.Web.Controllers
             await _courseService.AddCourse(courseToAdd);
             return Ok($"Course added: {courseToAdd.Name}");
         }
-
-        //[HttpPost("/api/courses/")]
-        //public async Task<IActionResult> PostCourse([FromBody] NewCourseRequest courseRequest)
-        //{
-        //    courseRequest.GradeItems = new List<GradedItem>();
-
-
-
-        //    var now = DateTime.UtcNow;
-        //    var course = new Course
-        //    {
-        //        Name = courseRequest.Name,
-        //        Instructor = courseRequest.Instructor,
-        //        FinalGrade = null,
-        //        GradedItems = courseRequest.GradeItems,
-        //        CreatedOn = now,
-        //        UpdatedOn = now
-        //    };
-
-        //    await _courseService.AddCourse(course);
-        //    return Ok($"Course added: {course.Name}");
-        //}
 
         [HttpDelete("/api/courses/{id}")]
         public async Task<IActionResult> DeleteCourse(int id)
