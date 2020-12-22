@@ -56,12 +56,19 @@ namespace FinalGradeCalculator.Services
             }
 
             return coursesFromDb;
-            //return await _db.Courses.ToListAsync();
         }
 
         public async Task<Course> GetCourse(int courseId)
         {
             var course = await _db.Courses.FindAsync(courseId);
+
+            if (course == null)
+                return null;
+
+            IList<GradedItem> gradedItems = await
+                _db.GradedItems.Where(a => a.CourseId == courseId).ToListAsync();
+
+            course.GradedItems = gradedItems;
             return course;
         }
     }
