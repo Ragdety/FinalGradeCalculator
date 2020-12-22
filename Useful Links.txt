@@ -7,3 +7,8 @@ https://www.dotnetcurry.com/aspnet/1278/aspnet-webapi-pass-multiple-parameters-a
 https://stackoverflow.com/questions/21558277/entity-framework-retrieve-data-from-table-with-foreign-key
 
 https://docs.microsoft.com/en-us/ef/ef6/fundamentals/relationships
+
+https://stackoverflow.com/questions/12886559/cannot-implicitly-convert-type-from-task
+
+Whole Series:
+https://www.youtube.com/playlist?list=PL3_YUnRN3Uhi6WH0owikCdLqlK4l60EiT
