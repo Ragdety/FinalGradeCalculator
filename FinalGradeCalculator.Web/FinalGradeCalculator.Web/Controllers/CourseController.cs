@@ -7,6 +7,7 @@ using FinalGradeCalculator.Services;
 using FinalGradeCalculator.Web.CourseRequests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace FinalGradeCalculator.Web.Controllers
 {
@@ -44,9 +45,28 @@ namespace FinalGradeCalculator.Web.Controllers
             return Ok(course);
         }
 
+        //[HttpPost("/api/courses/")]
+        //public async Task<IActionResult> PostCourse([FromBody] JObject objData)
+        //{
+        //    ICollection<GradedItem> gradedItemsLst = new List<GradedItem>();
+
+        //    //Represents a Course
+        //    dynamic course = objData;
+
+        //    //Represents the Graded Items attribute
+        //    JArray gradedItemsJson = course.GradedItems;
+        //    //JObject gradedItems = course.GradedItems;
+
+        //    await _courseService.AddCourse(course);
+        //    return Ok($"Course added: {course.Name}");
+        //}
+
         [HttpPost("/api/courses/")]
         public async Task<IActionResult> PostCourse([FromBody] NewCourseRequest courseRequest)
         {
+            courseRequest.GradeItems = new List<GradedItem>();
+
+
             var now = DateTime.UtcNow;
             var course = new Course
             {
