@@ -43,6 +43,8 @@ namespace FinalGradeCalculator.Web
             //To make use of ICourseService
             services.AddScoped<ICourseService, CourseService>();
 
+            services.AddScoped<IGradedItemService, GradedItemService>();
+
             //To add AspNetCore.Mvc.NewtonsoftJson
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -65,7 +67,7 @@ namespace FinalGradeCalculator.Web
             //Cross-Origin Resource Sharing (CORS): https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
             app.UseCors(builder => builder
                 .WithOrigins(
-                    "http://localhost:8080" //Might change the port
+                    "http://localhost:3000" //Might change the port
                 )
                 .AllowAnyMethod()
                 .AllowAnyHeader()
