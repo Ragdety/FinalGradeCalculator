@@ -52,15 +52,17 @@ namespace FinalGradeCalculator.Services
 
         public async Task<IList<Course>> GetAllCourses()
         {
-            IList<Course> coursesFromDb = await _db.Courses.ToListAsync();
+            //IList<Course> coursesFromDb = await _db.Courses.ToListAsync();
             
-            foreach (var course in coursesFromDb)
-            {
-                IQueryable<GradedItem> gradedItems = _db.GradedItems.Where(a => a.CourseId == course.Id);
-                course.GradedItems = await gradedItems.ToListAsync();
-            }
+            //foreach (var course in coursesFromDb)
+            //{
+            //    IQueryable<GradedItem> gradedItems = _db.GradedItems.Where(a => a.CourseId == course.Id);
+            //    course.GradedItems = await gradedItems.ToListAsync();
+            //}
 
-            return coursesFromDb;
+            return await _db.Courses
+                .Include(g => g.GradedItems)
+                .ToListAsync();
         }
 
         public async Task<Course> GetCourse(int courseId)
