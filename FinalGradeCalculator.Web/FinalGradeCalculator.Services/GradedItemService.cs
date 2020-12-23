@@ -1,6 +1,9 @@
-﻿using FinalGradeCalculator.Data.Models;
+﻿using FinalGradeCalculator.Data;
+using FinalGradeCalculator.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,24 +11,48 @@ namespace FinalGradeCalculator.Services
 {
     public class GradedItemService : IGradedItemService
     {
-        public Task AddGradedItem(GradedItem gradedItem)
+        private readonly FinalGradeCalculatorDbContext _db;
+
+        public GradedItemService(FinalGradeCalculatorDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
         }
 
-        public Task DeleteGradedItem(int gradedItemId, int courseId)
+        public async Task AddGradedItem(GradedItem gradedItem)
         {
-            throw new NotImplementedException();
+            await _db.GradedItems.AddAsync(gradedItem);
         }
 
-        public Task<IList<GradedItem>> GetAllGradedItemsFromCourse(int courseId)
+        public async Task DeleteGradedItem(int gradedItemId)
         {
-            throw new NotImplementedException();
+            var gradedItemToDelete = await GetGradedItem(gradedItemId);
+            if(gradedItemToDelete != null)
+            {
+                _db.GradedItems.Remove(gradedItemToDelete);
+            }
+            else
+            {
+                throw new InvalidOperationException(
+                    "Cannot delete grade item that doesn't exist");
+            }
         }
 
-        public Task<GradedItem> GetGradedItemFromCourse(int gradedItemId, int courseId)
+        public async Task<IList<GradedItem>> GetAllGradedItemsFromCourse(int courseId)
         {
-            throw new NotImplementedException();
+            return await _db.GradedItems
+                .Where(c => c.CourseId == courseId)
+                .ToListAsync();
+        }
+
+        public async Task<GradedItem> GetGradedItem(int gradedItemId)
+        {
+            var gradedItem = await _db.GradedItems
+                .FindAsync(gradedItemId);
+
+            if (gradedItem == null)
+                return null;
+
+            return gradedItem;
         }
     }
 }

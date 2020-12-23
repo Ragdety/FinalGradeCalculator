@@ -11,9 +11,11 @@ namespace FinalGradeCalculator.Services
     public class CourseService : ICourseService
     {
         private readonly FinalGradeCalculatorDbContext _db;
-        public CourseService(FinalGradeCalculatorDbContext db)
+        private readonly IGradedItemService _gradedItemService;
+        public CourseService(FinalGradeCalculatorDbContext db, IGradedItemService gradedItemService)
         {
             _db = db;
+            _gradedItemService = gradedItemService;
         }
 
         public async Task AddCourse(Course course)
@@ -22,8 +24,7 @@ namespace FinalGradeCalculator.Services
             {
                 foreach (GradedItem gradedItem in course.GradedItems)
                 {
-                    //To Update the GradedItems DB table as well
-                    await _db.GradedItems.AddAsync(gradedItem);
+                    await _gradedItemService.AddGradedItem(gradedItem);
                 }
             }
             await _db.Courses.AddAsync(course);
@@ -37,7 +38,7 @@ namespace FinalGradeCalculator.Services
             {
                 foreach (var gradedItem in courseToDelete.GradedItems)
                 {
-                    _db.GradedItems.Remove(gradedItem);
+                    await _gradedItemService.DeleteGradedItem(gradedItem.Id);
                 }
 
                 _db.Courses.Remove(courseToDelete);
@@ -52,14 +53,6 @@ namespace FinalGradeCalculator.Services
 
         public async Task<IList<Course>> GetAllCourses()
         {
-            //IList<Course> coursesFromDb = await _db.Courses.ToListAsync();
-            
-            //foreach (var course in coursesFromDb)
-            //{
-            //    IQueryable<GradedItem> gradedItems = _db.GradedItems.Where(a => a.CourseId == course.Id);
-            //    course.GradedItems = await gradedItems.ToListAsync();
-            //}
-
             return await _db.Courses
                 .Include(g => g.GradedItems)
                 .ToListAsync();
@@ -72,8 +65,8 @@ namespace FinalGradeCalculator.Services
             if (course == null)
                 return null;
 
-            IList<GradedItem> gradedItems = await
-                _db.GradedItems.Where(a => a.CourseId == courseId).ToListAsync();
+            IList<GradedItem> gradedItems = 
+                await _gradedItemService.GetAllGradedItemsFromCourse(courseId);
 
             course.GradedItems = gradedItems;
             return course;
