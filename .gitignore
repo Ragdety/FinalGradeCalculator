@@ -5,9 +5,8 @@ FinalGradeCalculator.Web/.vs/FinalGradeCalculator/v16/.suo
 *.user
 _ReSharper.*/
 *.sdf
-/bin/
+/bin/Debug
 /obj/
-/Debug/
 Release/
 *.opensdf
 *.tlog
