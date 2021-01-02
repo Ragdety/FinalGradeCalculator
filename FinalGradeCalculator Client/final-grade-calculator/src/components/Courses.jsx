@@ -6,11 +6,23 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CoursesAPI from '../apis/CoursesAPI';
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);
 
-    
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const res = await CoursesAPI.get("/");
+          setCourses(res.data);
+        } 
+        catch (error) {
+          console.error(error);
+        }
+      }
+      fetchData();
+    }, []);
 
 
     function createCourse(name, instructor, finalGrade) {

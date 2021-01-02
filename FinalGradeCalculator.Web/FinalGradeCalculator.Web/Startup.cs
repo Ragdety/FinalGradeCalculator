@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FinalGradeCalculator.Data;
 using FinalGradeCalculator.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -25,11 +26,20 @@ namespace FinalGradeCalculator.Web
 
         public IConfiguration Configuration { get; }
 
+        public CorsPolicy GenerateCorsPolicy()
+        {
+            var corsBuilder = new CorsPolicyBuilder();
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowAnyMethod();
+            corsBuilder.AllowAnyOrigin(); // For anyone access.
+                                          //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
+            return corsBuilder.Build();
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
             services.AddControllers();
 
             services.AddDbContext<FinalGradeCalculatorDbContext>(option => {
@@ -67,7 +77,7 @@ namespace FinalGradeCalculator.Web
             //Cross-Origin Resource Sharing (CORS): https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
             app.UseCors(builder => builder
                 .WithOrigins(
-                    "http://localhost:3000" //Might change the port
+                    "http://localhost:3000"
                 )
                 .AllowAnyMethod()
                 .AllowAnyHeader()
@@ -79,6 +89,7 @@ namespace FinalGradeCalculator.Web
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

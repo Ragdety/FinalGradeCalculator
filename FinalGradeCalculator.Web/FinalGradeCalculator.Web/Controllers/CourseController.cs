@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FinalGradeCalculator.Data.Models;
 using FinalGradeCalculator.Services;
 using FinalGradeCalculator.Web.CourseRequests;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
@@ -13,6 +14,7 @@ namespace FinalGradeCalculator.Web.Controllers
 {
     [Route("/api/courses")]
     [ApiController]
+    //[EnableCors("AllowOrigin")]
     public class CourseController : ControllerBase
     {
         private readonly ILogger<CourseController> _logger;
