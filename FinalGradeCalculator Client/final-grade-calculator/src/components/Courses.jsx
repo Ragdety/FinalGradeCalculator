@@ -14,8 +14,9 @@ const Courses = () => {
     useEffect(() => {
       async function fetchData() {
         try {
-          const res = await CoursesAPI.get("/");
-          setCourses(res.data);
+          const response = await CoursesAPI.get("/");
+          setCourses(response.data);
+          console.log(courses);
         } 
         catch (error) {
           console.error(error);
@@ -24,20 +25,9 @@ const Courses = () => {
       fetchData();
     }, []);
 
-
-    function createCourse(name, instructor, finalGrade) {
-        return { name, instructor, finalGrade };
-    }
-    
-    const rows = [
-        createCourse("C++", 'Eric Charnesky', 100),
-        createCourse("Java", 'Iliana Martinez', 99.74),
-        createCourse("Linear Algebra", 'Mark Stevenson', 95)
-    ];
-
     return (
       <TableContainer component={Paper} className="container">
-        <Table aria-label="simple table">
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>Courses</TableCell>
@@ -47,14 +37,18 @@ const Courses = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
+            {courses.map((course) => (
+              <TableRow key={course.id}>
+                <TableCell>
+                  {course.name}
                 </TableCell>
-                <TableCell>{row.instructor}</TableCell>
-                <TableCell>{row.finalGrade}</TableCell>
-                <TableCell>{row.carbs}</TableCell>
+                <TableCell>{course.instructor}</TableCell>
+                <TableCell>
+                  {course.finalGrade === null ? 'To be determined' : course.finalGrade}
+                </TableCell>
+                <TableCell>
+                  <button className="btn btn-primary" key={course.id}>Edit</button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
