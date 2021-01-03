@@ -21,7 +21,6 @@ const AddCourse = () => {
         catch (error) {
             console.error(error);
         }
-
     }
 
     return (
