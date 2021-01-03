@@ -16,8 +16,7 @@ const Courses = () => {
         try {
           const response = await CoursesAPI.get("/");
           setCourses(response.data);
-          console.log(courses);
-        } 
+        }
         catch (error) {
           console.error(error);
         }
@@ -28,8 +27,8 @@ const Courses = () => {
     return (
       <TableContainer component={Paper} className="container">
         <Table>
-          <TableHead>
-            <TableRow>
+          <TableHead className="">
+            <TableRow className="">
               <TableCell>Courses</TableCell>
               <TableCell>Instructor</TableCell>
               <TableCell>Final Grade</TableCell>
@@ -46,8 +45,8 @@ const Courses = () => {
                 <TableCell>
                   {course.finalGrade === null ? 'To be determined' : course.finalGrade}
                 </TableCell>
-                <TableCell>
-                  <button className="btn btn-primary" key={course.id}>Edit</button>
+                <TableCell className="justify-content-center">
+                  <button className="btn btn-primary justify-content-center" key={course.id}>Edit</button>
                 </TableCell>
               </TableRow>
             ))}
