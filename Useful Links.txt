@@ -10,5 +10,10 @@ https://docs.microsoft.com/en-us/ef/ef6/fundamentals/relationships
 
 https://stackoverflow.com/questions/12886559/cannot-implicitly-convert-type-from-task
 
+https://stackoverflow.com/questions/45400361/why-is-gitignore-not-ignoring-my-files
+
 Whole Series:
 https://www.youtube.com/playlist?list=PL3_YUnRN3Uhi6WH0owikCdLqlK4l60EiT
+
+
+
