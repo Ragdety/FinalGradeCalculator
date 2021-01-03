@@ -10,7 +10,8 @@ import {
   Button,
   IconButton
 } from '@material-ui/core';
-import { DeleteIcon } from '@material-ui/icons';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import CoursesAPI from '../apis/CoursesAPI';
 
 const Courses = () => {
@@ -27,44 +28,72 @@ const Courses = () => {
         }
       }
       fetchData();
-    }, []);
+    }, [courses]);
 
     return (
-      <TableContainer component={Paper} className="container">
-        <Table>
-          <TableHead className="">
-            <TableRow className="">
-              <TableCell>Courses</TableCell>
-              <TableCell>Instructor</TableCell>
-              <TableCell>Final Grade</TableCell>
-              <TableCell>Grade Items</TableCell>
-              <TableCell>Edit Course</TableCell>
-              <TableCell>Delete Course</TableCell>
+      <TableContainer className="container">
+        <Table className="table table-hover">
+          <TableHead className="bg-primary">
+            <TableRow className="text-white bg-primary">
+              <TableCell 
+                className="text-white">Courses</TableCell>
+              <TableCell 
+                className="text-white">Instructor</TableCell>
+              <TableCell 
+                className="text-white">Final Grade</TableCell>
+              <TableCell 
+                className="text-white"
+                align="center">
+                  Grade Items
+              </TableCell>
+              <TableCell 
+                className="text-white"
+                align="center">
+                  Edit Course
+              </TableCell>
+              <TableCell 
+                className="text-white"
+                align="center">
+                Delete Course
+              </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-dark">
             {courses.map((course) => (
               <TableRow key={course.id}>
-                <TableCell>
+                <TableCell
+                  className="text-white">
                   {course.name}
                 </TableCell>
-                <TableCell>{course.instructor}</TableCell>
-                <TableCell>
+                <TableCell
+                  className="text-white">{course.instructor}</TableCell>
+                <TableCell
+                  className="text-white">
                   {course.finalGrade === null ? 'To be determined' : course.finalGrade}
                 </TableCell>
-                <TableCell className="justify-content-center">
-                  <Button 
-                    className="col-md-2"
+                <TableCell 
+                  className="text-white"
+                  align="center">
+                  <Button
                     color="primary" 
                     variant="contained">
                     Edit
                   </Button>
                 </TableCell>
-                {/* <TableCell>
-                <IconButton aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-                </TableCell> */}
+                <TableCell align="center">
+                  <IconButton 
+                    aria-label="edit"
+                    className="text-warning">
+                    <EditIcon />
+                  </IconButton>
+                </TableCell>
+                <TableCell align="center">
+                  <IconButton 
+                    aria-label="delete"
+                    className="text-danger">
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
