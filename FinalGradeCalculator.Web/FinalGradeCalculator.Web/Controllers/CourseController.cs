@@ -56,11 +56,13 @@ namespace FinalGradeCalculator.Web.Controllers
             dynamic course = objData;
             JArray gradedItemsJson = course.GradedItems;
 
-            foreach (var gradedItem in gradedItemsJson)
+            if(gradedItemsJson != null)
             {
-                gradedItemsLstRequest.Add(gradedItem.ToObject<NewGradedItemRequest>());
+                foreach (var gradedItem in gradedItemsJson)
+                {
+                    gradedItemsLstRequest.Add(gradedItem.ToObject<NewGradedItemRequest>());
+                }
             }
-
             ICollection<GradedItem> gradedItems = new List<GradedItem>();
 
             foreach (var gradedItem in gradedItemsLstRequest)
