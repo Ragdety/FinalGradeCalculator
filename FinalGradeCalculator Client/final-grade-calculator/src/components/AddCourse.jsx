@@ -16,7 +16,6 @@ const AddCourse = () => {
                 Instructor: instructor,
                 GradedItems: null,
             });
-
         } 
         catch (error) {
             console.error(error);

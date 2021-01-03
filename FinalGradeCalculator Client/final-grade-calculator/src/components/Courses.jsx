@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { 
+  TableRow, 
+  TableHead, 
+  TableContainer, 
+  TableCell, 
+  TableBody, 
+  Table,
+  Button,
+  IconButton
+} from '@material-ui/core';
+import { DeleteIcon } from '@material-ui/icons';
 import CoursesAPI from '../apis/CoursesAPI';
 
 const Courses = () => {
@@ -33,6 +38,8 @@ const Courses = () => {
               <TableCell>Instructor</TableCell>
               <TableCell>Final Grade</TableCell>
               <TableCell>Grade Items</TableCell>
+              <TableCell>Edit Course</TableCell>
+              <TableCell>Delete Course</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -46,8 +53,18 @@ const Courses = () => {
                   {course.finalGrade === null ? 'To be determined' : course.finalGrade}
                 </TableCell>
                 <TableCell className="justify-content-center">
-                  <button className="btn btn-primary justify-content-center" key={course.id}>Edit</button>
+                  <Button 
+                    className="col-md-2"
+                    color="primary" 
+                    variant="contained">
+                    Edit
+                  </Button>
                 </TableCell>
+                {/* <TableCell>
+                <IconButton aria-label="delete">
+                  <DeleteIcon />
+                </IconButton>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>
