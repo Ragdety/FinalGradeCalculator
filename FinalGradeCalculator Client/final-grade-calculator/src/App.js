@@ -1,10 +1,14 @@
 import './App.css';
+import AddCourse from './components/AddCourse';
 import Courses from './components/Courses.jsx';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-center display-3">Courses</h1>
+      <Header/>
+      <AddCourse />
+      <br />
       <Courses />
     </div>
   );
