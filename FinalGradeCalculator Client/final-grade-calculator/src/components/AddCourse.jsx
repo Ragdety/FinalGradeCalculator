@@ -10,6 +10,18 @@ const AddCourse = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        try {
+            const response = CoursesAPI.post('/', {
+                Name: name,
+                Instructor: instructor,
+                GradedItems: null,
+            });
+
+        } 
+        catch (error) {
+            console.error(error);
+        }
+
     }
 
     return (
