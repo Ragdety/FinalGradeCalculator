@@ -105,5 +105,20 @@ namespace FinalGradeCalculator.Web.Controllers
             }
             return Ok($"Course deleted with id: {id}");
         }
+
+        [HttpPut("/api/courses/{id}")]
+        public async Task<IActionResult> UpdateCourse(int id, [FromBody] NewCourseRequest courseRequest)
+        {
+            try
+            {
+                await _courseService.UpdateCourse(id, courseRequest);
+            }
+            catch(InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok($"Course Updated with id: {id}");
+        }
     }
 }
