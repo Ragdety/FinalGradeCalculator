@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Paper from '@material-ui/core/Paper';
 import { 
   TableRow, 
   TableHead, 
@@ -29,6 +28,39 @@ const Courses = () => {
       }
       fetchData();
     }, [courses]);
+
+    const handleEditGradedItems = (e, id) => {
+      e.stopPropagation();
+
+      try {
+        
+      } 
+      catch (error) {
+        console.error(error);
+      }
+    }
+
+    const handleEdit = (e, id) => {
+      e.stopPropagation();
+
+      try {
+        
+      } 
+      catch (error) {
+        console.error(error);
+      }
+    }
+
+    const handleDelete = async (e, id) => {
+      e.stopPropagation();
+
+      try {
+        await CoursesAPI.delete(`/${id}`);
+      } 
+      catch (error) {
+        console.error(error);
+      }
+    }
 
     return (
       <TableContainer className="container">
@@ -76,21 +108,24 @@ const Courses = () => {
                   align="center">
                   <Button
                     color="primary" 
-                    variant="contained">
+                    variant="contained"
+                    onClick={(e) => handleEditGradedItems(e, course.id)}>
                     Edit
                   </Button>
                 </TableCell>
                 <TableCell align="center">
                   <IconButton 
                     aria-label="edit"
-                    className="text-warning">
+                    className="text-warning"
+                    onClick={(e) => handleEdit(e, course.id)}>
                     <EditIcon />
                   </IconButton>
                 </TableCell>
                 <TableCell align="center">
                   <IconButton 
                     aria-label="delete"
-                    className="text-danger">
+                    className="text-danger"
+                    onClick={(e) => handleDelete(e, course.id)}>
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
