@@ -1,15 +1,21 @@
 import './App.css';
-import AddCourse from './components/AddCourse';
-import Courses from './components/Courses.jsx';
-import Header from './components/Header';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from './routes/Home';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <AddCourse />
-      <br />
-      <Courses />
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            component={Home}
+          />
+
+
+        </Switch>
+      </Router>
     </div>
   );
 }
