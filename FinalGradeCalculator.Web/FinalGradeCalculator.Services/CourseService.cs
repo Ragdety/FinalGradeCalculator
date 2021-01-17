@@ -1,5 +1,6 @@
 ﻿using FinalGradeCalculator.Data;
 using FinalGradeCalculator.Data.Models;
+using FinalGradeCalculator.Web.CourseRequests;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -70,6 +71,18 @@ namespace FinalGradeCalculator.Services
 
             course.GradedItems = gradedItems;
             return course;
+        }
+
+        public async Task UpdateCourse(int courseToUpdateId, NewCourseRequest courseRequest)
+        {
+            var course = await GetCourse(courseToUpdateId);
+
+            if (course == null)
+                throw new InvalidOperationException("Course does not exist");
+
+            course.Name = courseRequest.Name;
+            course.Instructor = courseRequest.Instructor;
+            await _db.SaveChangesAsync();
         }
     }
 }
