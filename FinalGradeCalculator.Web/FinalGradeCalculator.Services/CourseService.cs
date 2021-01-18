@@ -1,10 +1,9 @@
 ﻿using FinalGradeCalculator.Data;
 using FinalGradeCalculator.Data.Models;
-using FinalGradeCalculator.Web.CourseRequests;
+using FinalGradeCalculator.Data.Dtos;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FinalGradeCalculator.Services
@@ -73,8 +72,9 @@ namespace FinalGradeCalculator.Services
             return course;
         }
 
-        public async Task UpdateCourse(int courseToUpdateId, NewCourseRequest courseRequest)
+        public async Task UpdateCourse(int courseToUpdateId, CourseDto courseRequest)
         {
+            var now = DateTime.UtcNow;
             var course = await GetCourse(courseToUpdateId);
 
             if (course == null)
@@ -82,6 +82,7 @@ namespace FinalGradeCalculator.Services
 
             course.Name = courseRequest.Name;
             course.Instructor = courseRequest.Instructor;
+            course.UpdatedOn = now;
             await _db.SaveChangesAsync();
         }
     }

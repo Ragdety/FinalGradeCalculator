@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinalGradeCalculator.Web.CourseRequests
+namespace FinalGradeCalculator.Data.Dtos
 {
-    public class NewGradedItemRequest
+    public class GradedItemDto
     {
         public string Name { get; set; }
         public double Grade { get; set; }

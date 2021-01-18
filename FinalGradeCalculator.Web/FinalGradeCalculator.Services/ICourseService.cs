@@ -1,5 +1,5 @@
 ﻿using FinalGradeCalculator.Data.Models;
-using FinalGradeCalculator.Web.CourseRequests;
+using FinalGradeCalculator.Data.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,6 +11,6 @@ namespace FinalGradeCalculator.Services
         Task<Course> GetCourse(int courseId);
         Task AddCourse(Course course);
         Task DeleteCourse(int courseId);
-        Task UpdateCourse(int courseToUpdateId, NewCourseRequest courseRequest);
+        Task UpdateCourse(int courseToUpdateId, CourseDto courseRequest);
     }
 }

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinalGradeCalculator.Web.CourseRequests
+namespace FinalGradeCalculator.Data.Dtos
 {
-    public class NewCourseRequest
+    public class CourseDto
     {
         public string Name { get; set; }
         public string Instructor { get; set; }
-        public ICollection<NewGradedItemRequest> GradeItems { get; set; }
+        public ICollection<GradedItemDto> GradeItems { get; set; }
     }
 }

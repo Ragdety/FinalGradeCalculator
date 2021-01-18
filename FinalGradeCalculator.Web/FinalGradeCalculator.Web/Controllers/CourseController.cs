@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalGradeCalculator.Data.Models;
 using FinalGradeCalculator.Services;
-using FinalGradeCalculator.Web.CourseRequests;
+using FinalGradeCalculator.Data.Dtos;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -52,7 +52,7 @@ namespace FinalGradeCalculator.Web.Controllers
         {
             var now = DateTime.UtcNow;
 
-            ICollection<NewGradedItemRequest> gradedItemsLstRequest = new List<NewGradedItemRequest>();
+            ICollection<GradedItemDto> gradedItemsLstRequest = new List<GradedItemDto>();
             dynamic course = objData;
             JArray gradedItemsJson = course.GradedItems;
 
@@ -60,7 +60,7 @@ namespace FinalGradeCalculator.Web.Controllers
             {
                 foreach (var gradedItem in gradedItemsJson)
                 {
-                    gradedItemsLstRequest.Add(gradedItem.ToObject<NewGradedItemRequest>());
+                    gradedItemsLstRequest.Add(gradedItem.ToObject<GradedItemDto>());
                 }
             }
             ICollection<GradedItem> gradedItems = new List<GradedItem>();
@@ -107,7 +107,7 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPut("/api/courses/{id}")]
-        public async Task<IActionResult> UpdateCourse(int id, [FromBody] NewCourseRequest courseRequest)
+        public async Task<IActionResult> UpdateCourse(int id, [FromBody] CourseDto courseRequest)
         {
             try
             {
