@@ -12,6 +12,7 @@ namespace FinalGradeCalculator.Services
     {
         private readonly FinalGradeCalculatorDbContext _db;
         private readonly IGradedItemService _gradedItemService;
+
         public CourseService(FinalGradeCalculatorDbContext db, IGradedItemService gradedItemService)
         {
             _db = db;
@@ -72,17 +73,18 @@ namespace FinalGradeCalculator.Services
             return course;
         }
 
-        public async Task UpdateCourse(int courseToUpdateId, CourseRequest courseRequest)
+        public async Task UpdateCourse(int courseToUpdateId, UpdateCourseRequest courseRequest)
         {
-            var now = DateTime.UtcNow;
             var course = await GetCourse(courseToUpdateId);
 
             if (course == null)
-                throw new InvalidOperationException("Course does not exist");
+                throw new InvalidOperationException(
+                    $"Course with id: {courseToUpdateId} does not exist");
 
             course.Name = courseRequest.Name;
             course.Instructor = courseRequest.Instructor;
-            course.UpdatedOn = now;
+            course.UpdatedOn = courseRequest.UpdatedOn;
+
             await _db.SaveChangesAsync();
         }
     }

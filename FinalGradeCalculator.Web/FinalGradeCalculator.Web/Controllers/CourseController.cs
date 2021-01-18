@@ -113,7 +113,7 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPut("/api/courses/{id}")]
-        public async Task<IActionResult> UpdateCourse(int id, [FromBody] CourseRequest courseRequest)
+        public async Task<IActionResult> UpdateCourse(int id, [FromBody] UpdateCourseRequest courseRequest)
         {
             try
             {
