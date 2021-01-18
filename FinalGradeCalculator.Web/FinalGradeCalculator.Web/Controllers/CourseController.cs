@@ -113,18 +113,24 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPut("/api/courses/{id}")]
-        public async Task<IActionResult> UpdateCourse(int id, [FromBody] UpdateCourseRequest courseRequest)
+        public async Task<IActionResult> UpdateCourse([FromRoute] int id, [FromBody] UpdateCourseRequest courseRequest)
         {
-            try
-            {
-                await _courseService.UpdateCourse(id, courseRequest);
-            }
-            catch(InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var now = DateTime.UtcNow;
+            var course = await _courseService.GetCourse(id);
 
-            return Ok($"Course Updated with id: {id}");
+            if(course == null)
+                return NotFound($"No course found with id: {id}");
+
+            course.Name = courseRequest.Name;
+            course.Instructor = courseRequest.Instructor;
+            course.UpdatedOn = now;
+
+            var updated = await _courseService.UpdateCourse(course);
+
+            if (updated)
+                return Ok($"Course Updated with id: {id}");
+
+            return NotFound($"No course found with id: ${id}");           
         }
     }
 }

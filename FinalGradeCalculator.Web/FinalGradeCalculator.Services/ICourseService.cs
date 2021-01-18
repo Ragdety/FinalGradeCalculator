@@ -11,6 +11,6 @@ namespace FinalGradeCalculator.Services
         Task<Course> GetCourse(int courseId);
         Task AddCourse(Course course);
         Task DeleteCourse(int courseId);
-        Task UpdateCourse(int courseToUpdateId, UpdateCourseRequest courseRequest);
+        Task<bool> UpdateCourse(Course courseToUpdate);
     }
 }

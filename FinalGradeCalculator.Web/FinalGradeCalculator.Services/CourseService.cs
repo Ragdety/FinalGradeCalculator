@@ -73,19 +73,11 @@ namespace FinalGradeCalculator.Services
             return course;
         }
 
-        public async Task UpdateCourse(int courseToUpdateId, UpdateCourseRequest courseRequest)
+        public async Task<bool> UpdateCourse(Course courseToUpdate)
         {
-            var course = await GetCourse(courseToUpdateId);
-
-            if (course == null)
-                throw new InvalidOperationException(
-                    $"Course with id: {courseToUpdateId} does not exist");
-
-            course.Name = courseRequest.Name;
-            course.Instructor = courseRequest.Instructor;
-            course.UpdatedOn = courseRequest.UpdatedOn;
-
-            await _db.SaveChangesAsync();
+            _db.Courses.Update(courseToUpdate);
+            var updated = await _db.SaveChangesAsync();
+            return updated > 0;
         }
     }
 }

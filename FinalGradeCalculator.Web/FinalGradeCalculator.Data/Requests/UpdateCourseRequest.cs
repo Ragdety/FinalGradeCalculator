@@ -8,6 +8,5 @@ namespace FinalGradeCalculator.Data.Requests
     {
         public string Name { get; set; }
         public string Instructor { get; set; }
-        public DateTime UpdatedOn { get; set; }
     }
 }
