@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalGradeCalculator.Data.Models;
 using FinalGradeCalculator.Services;
-using FinalGradeCalculator.Data.Dtos;
+using FinalGradeCalculator.Data.Requests;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using AutoMapper;
 
 namespace FinalGradeCalculator.Web.Controllers
 {
@@ -19,11 +20,16 @@ namespace FinalGradeCalculator.Web.Controllers
     {
         private readonly ILogger<CourseController> _logger;
         private readonly ICourseService _courseService;
+        private readonly IMapper _mapper;
 
-        public CourseController(ILogger<CourseController> logger, ICourseService courseService)
+        public CourseController(
+            ILogger<CourseController> logger, 
+            ICourseService courseService, 
+            IMapper mapper)
         {
             _logger = logger;
             _courseService = courseService;
+            _mapper = mapper;
         }
 
         [HttpGet("/api/courses")]
@@ -52,7 +58,7 @@ namespace FinalGradeCalculator.Web.Controllers
         {
             var now = DateTime.UtcNow;
 
-            ICollection<GradedItemDto> gradedItemsLstRequest = new List<GradedItemDto>();
+            ICollection<GradedItemRequest> gradedItemsLstRequest = new List<GradedItemRequest>();
             dynamic course = objData;
             JArray gradedItemsJson = course.GradedItems;
 
@@ -60,7 +66,7 @@ namespace FinalGradeCalculator.Web.Controllers
             {
                 foreach (var gradedItem in gradedItemsJson)
                 {
-                    gradedItemsLstRequest.Add(gradedItem.ToObject<GradedItemDto>());
+                    gradedItemsLstRequest.Add(gradedItem.ToObject<GradedItemRequest>());
                 }
             }
             ICollection<GradedItem> gradedItems = new List<GradedItem>();
@@ -107,7 +113,7 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPut("/api/courses/{id}")]
-        public async Task<IActionResult> UpdateCourse(int id, [FromBody] CourseDto courseRequest)
+        public async Task<IActionResult> UpdateCourse(int id, [FromBody] CourseRequest courseRequest)
         {
             try
             {

@@ -1,6 +1,6 @@
 ﻿using FinalGradeCalculator.Data;
 using FinalGradeCalculator.Data.Models;
-using FinalGradeCalculator.Data.Dtos;
+using FinalGradeCalculator.Data.Requests;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace FinalGradeCalculator.Services
             return course;
         }
 
-        public async Task UpdateCourse(int courseToUpdateId, CourseDto courseRequest)
+        public async Task UpdateCourse(int courseToUpdateId, CourseRequest courseRequest)
         {
             var now = DateTime.UtcNow;
             var course = await GetCourse(courseToUpdateId);
