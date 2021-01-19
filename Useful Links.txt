@@ -12,6 +12,8 @@ https://stackoverflow.com/questions/12886559/cannot-implicitly-convert-type-from
 
 https://stackoverflow.com/questions/45400361/why-is-gitignore-not-ignoring-my-files
 
+https://stackoverflow.com/questions/26968479/404-not-found-or-bad-request
+
 Whole Series:
 https://www.youtube.com/playlist?list=PL3_YUnRN3Uhi6WH0owikCdLqlK4l60EiT
 
