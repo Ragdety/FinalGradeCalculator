@@ -28,16 +28,13 @@ namespace FinalGradeCalculator.Services
         public async Task DeleteCourse(int courseId)
         {
             var courseToDelete = await GetCourse(courseId);
-            if(courseToDelete != null)
-            {
-                _db.Courses.Remove(courseToDelete);
-                await _db.SaveChangesAsync();
-            }
-            else
-            {
+
+            if(courseToDelete == null)
                 throw new InvalidOperationException(
                     "Cannot delete course that doesn't exist");
-            }
+            
+            _db.Courses.Remove(courseToDelete);
+            await _db.SaveChangesAsync();
         }
 
         public async Task<IList<Course>> GetAllCourses()
