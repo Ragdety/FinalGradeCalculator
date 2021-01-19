@@ -7,8 +7,8 @@ namespace FinalGradeCalculator.Services
     public interface IGradedItemService
     {
         Task<IList<GradedItem>> GetAllGradedItemsFromCourse(int courseId);
-        Task<GradedItem> GetGradedItem(int gradedItemId);
-        Task AddGradedItem(GradedItem gradedItem);
-        Task DeleteGradedItem(int gradedItemId);
+        Task<GradedItem> GetGradedItemFromCourse(int courseId, int gradedItemId);
+        Task AddGradedItemToCourse(int courseId, GradedItem gradedItem);
+        Task DeleteGradedItemFromCourse(int courseId, int gradedItemId);
     }
 }

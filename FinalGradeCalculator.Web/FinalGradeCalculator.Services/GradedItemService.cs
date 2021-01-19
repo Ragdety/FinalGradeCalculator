@@ -12,47 +12,53 @@ namespace FinalGradeCalculator.Services
     public class GradedItemService : IGradedItemService
     {
         private readonly FinalGradeCalculatorDbContext _db;
+        private readonly ICourseService _courseService;
 
-        public GradedItemService(FinalGradeCalculatorDbContext db)
+        public GradedItemService(FinalGradeCalculatorDbContext db, ICourseService courseService)
         {
             _db = db;
+            _courseService = courseService;
         }
 
-        public async Task AddGradedItem(GradedItem gradedItem)
+        public async Task AddGradedItemToCourse(int courseId, GradedItem gradedItem)
         {
-            await _db.GradedItems.AddAsync(gradedItem);
+            throw new NotImplementedException();
         }
 
-        public async Task DeleteGradedItem(int gradedItemId)
+        public async Task DeleteGradedItemFromCourse(int courseId, int gradedItemId)
         {
-            var gradedItemToDelete = await GetGradedItem(gradedItemId);
-            if(gradedItemToDelete != null)
-            {
-                _db.GradedItems.Remove(gradedItemToDelete);
-            }
-            else
-            {
-                throw new InvalidOperationException(
-                    "Cannot delete grade item that doesn't exist");
-            }
+            throw new NotImplementedException();
         }
 
         public async Task<IList<GradedItem>> GetAllGradedItemsFromCourse(int courseId)
         {
+            //Might throw exception
+            await ValidateCourse(courseId);
+
             return await _db.GradedItems
                 .Where(c => c.CourseId == courseId)
                 .ToListAsync();
         }
 
-        public async Task<GradedItem> GetGradedItem(int gradedItemId)
-        {
-            var gradedItem = await _db.GradedItems
-                .FindAsync(gradedItemId);
 
-            if (gradedItem == null)
-                return null;
+        public async Task<GradedItem> GetGradedItemFromCourse(int courseId, int gradedItemId)
+        {
+            await ValidateCourse(courseId);
+
+            var gradedItem = await _db.GradedItems
+                .Where(g => g.CourseId == courseId && g.Id == gradedItemId)
+                .FirstOrDefaultAsync();
 
             return gradedItem;
+        }
+
+        private async Task ValidateCourse(int courseId)
+        {
+            var course = await _courseService.GetCourse(courseId);
+
+            if (course == null)
+                throw new InvalidOperationException(
+                    $"No course exists with id {courseId}");
         }
     }
 }
