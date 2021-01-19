@@ -53,11 +53,6 @@ namespace FinalGradeCalculator.Services
                 .Include(g => g.GradedItems)
                 .FirstOrDefaultAsync(c => c.Id == courseId);
 
-            //IList<GradedItem> gradedItems = await _db.GradedItems
-            //    .Where(c => c.CourseId == courseId)
-            //    .ToListAsync();
-
-            //course.GradedItems = gradedItems;
             return course;
         }
 
