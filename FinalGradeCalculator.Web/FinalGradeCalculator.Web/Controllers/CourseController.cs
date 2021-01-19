@@ -54,48 +54,50 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPost("/api/courses/")]
-        public async Task<IActionResult> PostCourse([FromBody] JObject objData)
+        public async Task<IActionResult> PostCourse([FromBody] CourseRequest courseRequest)
         {
             var now = DateTime.UtcNow;
-
-            ICollection<GradedItemRequest> gradedItemsLstRequest = new List<GradedItemRequest>();
-            dynamic course = objData;
-            JArray gradedItemsJson = course.GradedItems;
-
-            if(gradedItemsJson != null)
-            {
-                foreach (var gradedItem in gradedItemsJson)
-                {
-                    gradedItemsLstRequest.Add(gradedItem.ToObject<GradedItemRequest>());
-                }
-            }
-            ICollection<GradedItem> gradedItems = new List<GradedItem>();
-
-            foreach (var gradedItem in gradedItemsLstRequest)
-            {
-                var gradedItemModel = new GradedItem
-                {
-                    Name = gradedItem.Name,
-                    Grade = gradedItem.Grade,
-                    CreatedOn = now,
-                    UpdatedOn = now
-                };
-
-                gradedItems.Add(gradedItemModel);
-            }
-
             var courseToAdd = new Course
             {
-                Name = course.Name,
-                Instructor = course.Instructor,
+                Name = courseRequest.Name,
+                Instructor = courseRequest.Instructor,
                 FinalGrade = null,
-                GradedItems = gradedItems,
+                GradedItems = null,
                 CreatedOn = now,
                 UpdatedOn = now
             };
 
             await _courseService.AddCourse(courseToAdd);
             return Ok($"Course added: {courseToAdd.Name}");
+
+
+            /*In method before: [FromBody] JObject objData ^^^*/
+
+            //ICollection<GradedItemRequest> gradedItemsLstRequest = new List<GradedItemRequest>();
+            //dynamic course = objData;
+            //JArray gradedItemsJson = course.GradedItems;
+
+            //if(gradedItemsJson != null)
+            //{
+            //    foreach (var gradedItem in gradedItemsJson)
+            //    {
+            //        gradedItemsLstRequest.Add(gradedItem.ToObject<GradedItemRequest>());
+            //    }
+            //}
+            //ICollection<GradedItem> gradedItems = new List<GradedItem>();
+
+            //foreach (var gradedItem in gradedItemsLstRequest)
+            //{
+            //    var gradedItemModel = new GradedItem
+            //    {
+            //        Name = gradedItem.Name,
+            //        Grade = gradedItem.Grade,
+            //        CreatedOn = now,
+            //        UpdatedOn = now
+            //    };
+
+            //    gradedItems.Add(gradedItemModel);
+            //}
         }
 
         [HttpDelete("/api/courses/{id}")]
@@ -113,7 +115,7 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPut("/api/courses/{id}")]
-        public async Task<IActionResult> UpdateCourse([FromRoute] int id, [FromBody] UpdateCourseRequest courseRequest)
+        public async Task<IActionResult> UpdateCourse([FromRoute] int id, [FromBody] CourseRequest courseRequest)
         {
             var now = DateTime.UtcNow;
             var course = await _courseService.GetCourse(id);

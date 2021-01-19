@@ -21,13 +21,6 @@ namespace FinalGradeCalculator.Services
 
         public async Task AddCourse(Course course)
         {
-            if (course.GradedItems.Count != 0)
-            {
-                foreach (GradedItem gradedItem in course.GradedItems)
-                {
-                    await _gradedItemService.AddGradedItem(gradedItem);
-                }
-            }
             await _db.Courses.AddAsync(course);
             await _db.SaveChangesAsync();
         }
@@ -37,11 +30,6 @@ namespace FinalGradeCalculator.Services
             var courseToDelete = await GetCourse(courseId);
             if(courseToDelete != null)
             {
-                foreach (var gradedItem in courseToDelete.GradedItems)
-                {
-                    await _gradedItemService.DeleteGradedItem(gradedItem.Id);
-                }
-
                 _db.Courses.Remove(courseToDelete);
                 await _db.SaveChangesAsync();
             }
