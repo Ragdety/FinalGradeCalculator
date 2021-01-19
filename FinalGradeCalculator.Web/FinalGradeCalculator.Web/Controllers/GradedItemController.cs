@@ -20,7 +20,7 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpGet("/api/gradedItems/{courseId}")]
-        public async Task<IActionResult> GetAllGradedItemsFromCourse(int courseId)
+        public async Task<IActionResult> GetAllGradedItemsFromCourse([FromRoute] int courseId)
         {
             try
             {
@@ -32,6 +32,26 @@ namespace FinalGradeCalculator.Web.Controllers
                 return Ok(gradedItems);
             }
             catch(InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet("/api/gradedItems/{courseId}/{gradedItemId}")]
+        public async Task<IActionResult> GetGradedItemFromCourse(
+            [FromRoute] int courseId, 
+            [FromRoute] int gradedItemId)
+        {
+            try
+            {
+                var gradedItem = await _gradedItemService.GetGradedItemFromCourse(courseId, gradedItemId);
+
+                if (gradedItem == null)
+                    return NotFound($"No graded item found for course with id: {courseId}");
+
+                return Ok(gradedItem);
+            }
+            catch (InvalidOperationException ex)
             {
                 return NotFound(ex.Message);
             }
