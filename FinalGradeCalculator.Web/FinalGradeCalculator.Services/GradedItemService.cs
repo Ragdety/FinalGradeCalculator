@@ -12,6 +12,8 @@ namespace FinalGradeCalculator.Services
     public class GradedItemService : IGradedItemService
     {
         private readonly FinalGradeCalculatorDbContext _db;
+
+        //Question: Can I inject services into other services?
         private readonly ICourseService _courseService;
 
         public GradedItemService(FinalGradeCalculatorDbContext db, ICourseService courseService)

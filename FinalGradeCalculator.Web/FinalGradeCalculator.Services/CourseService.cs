@@ -4,6 +4,7 @@ using FinalGradeCalculator.Data.Requests;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FinalGradeCalculator.Services
@@ -11,12 +12,11 @@ namespace FinalGradeCalculator.Services
     public class CourseService : ICourseService
     {
         private readonly FinalGradeCalculatorDbContext _db;
-        private readonly IGradedItemService _gradedItemService;
 
-        public CourseService(FinalGradeCalculatorDbContext db, IGradedItemService gradedItemService)
+        public CourseService(FinalGradeCalculatorDbContext db/*, IGradedItemService gradedItemService*/)
         {
             _db = db;
-            _gradedItemService = gradedItemService;
+            //_gradedItemService = gradedItemService;
         }
 
         public async Task AddCourse(Course course)
@@ -49,15 +49,15 @@ namespace FinalGradeCalculator.Services
 
         public async Task<Course> GetCourse(int courseId)
         {
-            var course = await _db.Courses.FindAsync(courseId);
+            var course = await _db.Courses
+                .Include(g => g.GradedItems)
+                .FirstOrDefaultAsync(c => c.Id == courseId);
 
-            if (course == null)
-                return null;
+            //IList<GradedItem> gradedItems = await _db.GradedItems
+            //    .Where(c => c.CourseId == courseId)
+            //    .ToListAsync();
 
-            IList<GradedItem> gradedItems = 
-                await _gradedItemService.GetAllGradedItemsFromCourse(courseId);
-
-            course.GradedItems = gradedItems;
+            //course.GradedItems = gradedItems;
             return course;
         }
 
