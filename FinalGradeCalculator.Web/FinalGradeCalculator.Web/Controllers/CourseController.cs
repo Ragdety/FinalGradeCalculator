@@ -114,7 +114,9 @@ namespace FinalGradeCalculator.Web.Controllers
         }
 
         [HttpPut("/api/courses/{id}")]
-        public async Task<IActionResult> UpdateCourse([FromRoute] int id, [FromBody] CourseRequest courseRequest)
+        public async Task<IActionResult> UpdateCourse(
+            [FromRoute] int id, 
+            [FromBody] CourseRequest courseRequest)
         {
             var now = DateTime.UtcNow;
             var course = await _courseService.GetCourse(id);
