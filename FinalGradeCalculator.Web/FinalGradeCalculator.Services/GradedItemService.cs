@@ -24,7 +24,9 @@ namespace FinalGradeCalculator.Services
 
         public async Task AddGradedItemToCourse(int courseId, GradedItem gradedItem)
         {
-            throw new NotImplementedException();
+            await ValidateCourse(courseId);
+            await _db.GradedItems.AddAsync(gradedItem);
+            await _db.SaveChangesAsync();
         }
 
         public async Task DeleteGradedItemFromCourse(int courseId, int gradedItemId)
