@@ -108,7 +108,7 @@ namespace FinalGradeCalculator.Web.Controllers
             }
             catch(InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
             return Ok($"Course deleted with id: {id}");
         }
