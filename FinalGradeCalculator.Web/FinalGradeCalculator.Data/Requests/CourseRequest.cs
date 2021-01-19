@@ -1,8 +1,6 @@
-﻿using FinalGradeCalculator.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace FinalGradeCalculator.Data.Requests
 {
@@ -10,6 +8,5 @@ namespace FinalGradeCalculator.Data.Requests
     {
         public string Name { get; set; }
         public string Instructor { get; set; }
-        public ICollection<GradedItemRequest> GradeItems { get; set; }
     }
 }
