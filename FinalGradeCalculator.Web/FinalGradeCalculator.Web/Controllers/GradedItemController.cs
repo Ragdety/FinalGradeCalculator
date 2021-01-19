@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalGradeCalculator.Data.Models;
+using FinalGradeCalculator.Data.Requests;
 using FinalGradeCalculator.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -52,6 +54,32 @@ namespace FinalGradeCalculator.Web.Controllers
                 return Ok(gradedItem);
             }
             catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpPost("/api/gradedItems/{courseId}")]
+        public async Task<IActionResult> AddGradedItem(
+            [FromRoute] int courseId, 
+            [FromBody] GradedItemRequest gradedItemRequest)
+        {
+            var now = DateTime.UtcNow;
+            var gradedItem = new GradedItem
+            {
+                Name = gradedItemRequest.Name,
+                Grade = gradedItemRequest.Grade,
+                CreatedOn = now,
+                UpdatedOn = now,
+                CourseId = courseId
+            };
+
+            try
+            {
+                await _gradedItemService.AddGradedItemToCourse(courseId, gradedItem);
+                return Ok($"Graded Item added to course with id: {courseId}");
+            }
+            catch(InvalidOperationException ex)
             {
                 return NotFound(ex.Message);
             }
