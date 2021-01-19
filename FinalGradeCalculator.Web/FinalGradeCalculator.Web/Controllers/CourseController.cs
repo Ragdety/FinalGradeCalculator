@@ -15,7 +15,6 @@ namespace FinalGradeCalculator.Web.Controllers
 {
     [Route("/api/courses")]
     [ApiController]
-    //[EnableCors("AllowOrigin")]
     public class CourseController : ControllerBase
     {
         private readonly ILogger<CourseController> _logger;
