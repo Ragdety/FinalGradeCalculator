@@ -84,5 +84,50 @@ namespace FinalGradeCalculator.Web.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpDelete("/api/gradedItems/{courseId}/{gradedItemId}")]
+        public async Task<IActionResult> DeleteGradedItemFromCourse(
+            [FromRoute] int courseId, 
+            [FromRoute] int gradedItemId)
+        {
+            try
+            {
+                await _gradedItemService.DeleteGradedItemFromCourse(courseId, gradedItemId);
+                return Ok($"Graded Item deleted from course with id: {courseId}");
+            }
+            catch(InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpPut("/api/gradedItems/{courseId}/{gradedItemId}")]
+        public async Task<IActionResult> UpdateGradedItemFromCourse(
+            [FromRoute] int courseId, 
+            [FromRoute] int gradedItemId,
+            [FromBody] GradedItemRequest gradedItemRequest)
+        {
+            var now = DateTime.UtcNow;
+
+            try
+            {
+                var gradedItemToUpdate = 
+                    await _gradedItemService.GetGradedItemFromCourse(courseId, gradedItemId);
+
+                if (gradedItemToUpdate == null)
+                    return NotFound($"Graded Item with Id: {gradedItemId} does not exist");
+
+                gradedItemToUpdate.Name = gradedItemRequest.Name;
+                gradedItemToUpdate.Grade = gradedItemRequest.Grade;
+                gradedItemToUpdate.UpdatedOn = now;
+
+                await _gradedItemService.UpdateGradedItemFromCourse(courseId, gradedItemToUpdate);
+                return Ok($"Graded Item with id: {gradedItemId} updated");
+            }
+            catch(InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }
