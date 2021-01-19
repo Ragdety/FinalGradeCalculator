@@ -31,7 +31,15 @@ namespace FinalGradeCalculator.Services
 
         public async Task DeleteGradedItemFromCourse(int courseId, int gradedItemId)
         {
-            throw new NotImplementedException();
+            await ValidateCourse(courseId);
+            var gradedItem = await GetGradedItemFromCourse(courseId, gradedItemId);
+
+            if(gradedItem == null)
+                throw new InvalidOperationException(
+                    $"No graded item exists with id {gradedItemId}");
+
+            _db.GradedItems.Remove(gradedItem);
+            await _db.SaveChangesAsync();
         }
 
         public async Task<IList<GradedItem>> GetAllGradedItemsFromCourse(int courseId)
@@ -44,7 +52,6 @@ namespace FinalGradeCalculator.Services
                 .ToListAsync();
         }
 
-
         public async Task<GradedItem> GetGradedItemFromCourse(int courseId, int gradedItemId)
         {
             await ValidateCourse(courseId);
@@ -52,8 +59,16 @@ namespace FinalGradeCalculator.Services
             var gradedItem = await _db.GradedItems
                 .Where(g => g.CourseId == courseId && g.Id == gradedItemId)
                 .FirstOrDefaultAsync();
-
             return gradedItem;
+        }
+
+        public async Task<bool> UpdateGradedItemFromCourse(int courseId, GradedItem gradedItemToUpdate)
+        {
+            await ValidateCourse(courseId);
+
+            _db.GradedItems.Update(gradedItemToUpdate);
+            var updated = await _db.SaveChangesAsync();
+            return updated > 0;
         }
 
         private async Task ValidateCourse(int courseId)
