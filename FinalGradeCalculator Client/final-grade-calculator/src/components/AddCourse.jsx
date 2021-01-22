@@ -7,14 +7,11 @@ const AddCourse = () => {
     const [name, setName] = useState("");
     const [instructor, setInstructor] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
+    const handleSubmit = async () => {
         try {
-            const response = CoursesAPI.post('/', {
-                Name: name,
-                Instructor: instructor,
-                GradedItems: null,
+            await CoursesAPI.post('/', {
+                Name: name.trimEnd(),
+                Instructor: instructor.trimEnd(),
             });
         } 
         catch (error) {
@@ -24,32 +21,36 @@ const AddCourse = () => {
 
     return (
         <div className="mb-4 container">
-            <form autoComplete="off">
+            <form 
+                autoComplete="off"
+                onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col">
                         <input
+                            required
                             className="form-control"
                             type="text" 
-                            required={true} 
                             placeholder="Course Name"
                             value={name}
-                            onChange={(e) => setName(e.target.value)}/>
+                            onChange={(e) => setName(e.target.value.trimStart())}/>
                     </div>
                     <div className="col">
-                        <input
+                        <input 
+                            required
                             className="form-control"
-                            type="text" 
-                            required={true} 
+                            type="text"
                             placeholder="Instructor"
                             value={instructor}
-                            onChange={(e) => setInstructor(e.target.value)}/>
+                            onChange={(e) => setInstructor(e.target.value.trimStart())}/>
                     </div>
                     <div className="col">
                         <Button 
+                            type="submit"
                             className="col-md-12"
                             color="primary" 
                             variant="contained"
-                            onClick={handleSubmit}>
+                            //onClick={handleSubmit}
+                            >
                             Add Course
                         </Button>
                     </div>
