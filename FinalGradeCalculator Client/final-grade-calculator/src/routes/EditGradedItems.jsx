@@ -1,11 +1,11 @@
 import React from 'react';
-import UpdateGradedItems from '../components/UpdateGradedItems';
+import GradedItems from '../components/GradedItems';
 
 const EditGradedItems = () => {
     return (
         <div className="container">
             Edit Graded Items Page
-            <UpdateGradedItems/>
+            <GradedItems/>
         </div>
     );
 }

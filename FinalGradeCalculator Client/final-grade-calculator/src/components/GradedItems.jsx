@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UpdateGradedItems = () => {
+const GradedItems = () => {
     return (
         <div>
             Update Graded Items Component
@@ -8,4 +8,4 @@ const UpdateGradedItems = () => {
     );
 }
 
-export default UpdateGradedItems;
+export default GradedItems;
