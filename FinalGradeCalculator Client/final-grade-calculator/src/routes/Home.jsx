@@ -1,7 +1,7 @@
 import React from 'react';
-import AddCourse from '../components/AddCourse';
-import Courses from '../components/Courses';
-import Header from '../components/Header';
+import AddCourse from '../components/Course/AddCourse';
+import Courses from '../components/Course/Courses';
+import Header from '../components/Course/Header';
 
 const Home = () => {
     return (

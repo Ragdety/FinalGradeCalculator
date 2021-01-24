@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import CoursesAPI from '../apis/CoursesAPI';
+import CoursesAPI from '../../apis/CoursesAPI';
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);

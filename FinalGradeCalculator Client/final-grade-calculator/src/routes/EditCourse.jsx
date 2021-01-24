@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateCourse from '../components/UpdateCourse';
+import UpdateCourse from '../components/GradedItem/UpdateCourse';
 
 const EditCourse = () => {
     return (

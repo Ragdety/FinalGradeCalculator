@@ -1,5 +1,5 @@
 import React from 'react';
-import GradedItems from '../components/GradedItems';
+import GradedItems from '../components/GradedItem/GradedItems';
 
 const EditGradedItems = () => {
     return (

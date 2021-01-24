@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button } from '@material-ui/core/';
-import CoursesAPI from '../apis/CoursesAPI';
+import CoursesAPI from '../../apis/CoursesAPI';
 
 const UpdateCourse = () => {
     const { id } = useParams(); //":id" <- from route
