@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { 
   TableRow, 
   TableHead, 
@@ -15,6 +16,7 @@ import CoursesAPI from '../apis/CoursesAPI';
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);
+    let history = useHistory();
 
     useEffect(() => {
       async function fetchData() {
@@ -32,23 +34,11 @@ const Courses = () => {
     const handleEditGradedItems = (e, id) => {
       e.stopPropagation();
 
-      try {
-        
-      } 
-      catch (error) {
-        console.error(error);
-      }
     }
 
     const handleEdit = (e, id) => {
       e.stopPropagation();
-
-      try {
-        
-      } 
-      catch (error) {
-        console.error(error);
-      }
+      history.push(`/courses/${id}/edit`)
     }
 
     const handleDelete = async (e, id) => {
