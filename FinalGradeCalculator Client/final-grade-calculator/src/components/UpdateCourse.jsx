@@ -19,7 +19,8 @@ const UpdateCourse = () => {
         fetchData();
     }, []);
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (e) => {
+        e.preventDefault();
         try {
             await CoursesAPI.put(`/${id}`, {
                 Name: name,
@@ -43,7 +44,7 @@ const UpdateCourse = () => {
             <div className="row mt-3">
                 <div className="col-md-4 mx-auto">
                     <div className="form">
-                        <form onSubmit={handleUpdate}>
+                        <form onSubmit={(e) => {handleUpdate(e)}}>
                             <div className="form-group">
                                 <input 
                                     value={name}
