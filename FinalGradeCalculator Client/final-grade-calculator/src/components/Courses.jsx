@@ -33,7 +33,7 @@ const Courses = () => {
 
     const handleEditGradedItems = (e, id) => {
       e.stopPropagation();
-
+      history.push(`/courses/${id}/gradedItems`);
     }
 
     const handleEdit = (e, id) => {
