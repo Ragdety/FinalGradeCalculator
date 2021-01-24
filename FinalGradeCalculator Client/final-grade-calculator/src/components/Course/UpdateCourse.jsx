@@ -15,8 +15,9 @@ const UpdateCourse = () => {
             setName(response.data.name);
             setInstructor(response.data.instructor);
         }
-
         fetchData();
+        //For now:
+        // eslint-disable-next-line
     }, []);
 
     const handleUpdate = async (e) => {
