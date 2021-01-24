@@ -23,8 +23,8 @@ const UpdateCourse = () => {
         e.preventDefault();
         try {
             await CoursesAPI.put(`/${id}`, {
-                Name: name,
-                Instructor: instructor,
+                Name: name.trimEnd(),
+                Instructor: instructor.trimEnd(),
             });
 
             returnBack();
@@ -52,7 +52,7 @@ const UpdateCourse = () => {
                                     type="text" 
                                     className="form-control mb-4" 
                                     placeholder="Name"
-                                    onChange={(e) => {setName(e.target.value)}}/>
+                                    onChange={(e) => {setName(e.target.value.trimStart())}}/>
                             </div>
                             <div className="form-group">
                                 <input 
@@ -61,7 +61,7 @@ const UpdateCourse = () => {
                                     type="text" 
                                     className="form-control" 
                                     placeholder="Instructor"
-                                    onChange={(e) => {setInstructor(e.target.value)}}/>
+                                    onChange={(e) => {setInstructor(e.target.value.trimStart())}}/>
                             </div>
                             <div className="text-center d-flex justify-content-between mt-3">
                                 <Button 
