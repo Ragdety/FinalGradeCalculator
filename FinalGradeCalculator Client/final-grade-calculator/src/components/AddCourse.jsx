@@ -2,7 +2,6 @@ import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import CoursesAPI from '../apis/CoursesAPI';
 
-
 const AddCourse = () => {
     const [name, setName] = useState("");
     const [instructor, setInstructor] = useState("");
