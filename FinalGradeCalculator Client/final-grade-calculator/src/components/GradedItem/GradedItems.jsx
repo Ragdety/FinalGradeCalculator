@@ -7,7 +7,6 @@ import {
   TableCell, 
   TableBody, 
   Table,
-  Button,
   IconButton
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -22,7 +21,6 @@ const GradedItems = () => {
         const fetchData = async () => {
             try {
                 const response = await GradedItemsAPI.get(`/${id}`);
-                console.log(response.data);
                 setGradedItems(response.data);
             } catch (error) {
                 console.error(error);
@@ -37,10 +35,10 @@ const GradedItems = () => {
     }
 
     const handleDelete = (e, id) => {
-
+      
     }
     return (
-        <TableContainer className="container">
+      <TableContainer className="container">
         <Table className="table table-hover">
           <TableHead className="bg-primary">
             <TableRow className="text-white bg-primary">
@@ -62,7 +60,7 @@ const GradedItems = () => {
           </TableHead>
           <TableBody className="table-dark">
             {gradedItems.map((gradedItem) => (
-              <TableRow key={gradedItems.id}>
+              <TableRow key={gradedItem.id}>
                 <TableCell
                   className="text-white">
                   {gradedItem.name}
