@@ -6,7 +6,7 @@ import GradedItemsAPI from '../../apis/GradedItemsAPI';
 const AddGradedItem = () => {
     const { id } = useParams();
     const [name, setName] = useState("");
-    const [grade, setGrade] = useState();
+    const [grade, setGrade] = useState("");
 
     const handleSubmit = async () => {
         try {
