@@ -4,6 +4,7 @@ import Home from './routes/Home';
 import EditCourse from './routes/EditCourse';
 import GradedItemsPage from './routes/GradedItemsPage';
 import EditGradedItems from './routes/EditGradedItems';
+import Page404 from './routes/Page404';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
             path='/'
             component={Home}
           />
+
+          <Route component={Page404} />
         </Switch>
       </Router>
     </div>
