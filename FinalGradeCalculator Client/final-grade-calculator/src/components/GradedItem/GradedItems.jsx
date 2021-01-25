@@ -35,11 +35,11 @@ const GradedItems = () => {
         // eslint-disable-next-line
     }, [gradedItems])
 
-    const handleEdit = (e, gradedItemId) => {
+    const handleEdit = (e, courseId, gradedItemId) => {
       e.stopPropagation();
 
       try {
-        
+        history.push(`/courses/${courseId}/gradedItems/edit/${gradedItemId}`);
       } 
       catch (error) {
         console.log(error)
@@ -96,7 +96,7 @@ const GradedItems = () => {
                     <IconButton 
                       aria-label="edit"
                       className="text-warning"
-                      onClick={(e) => handleEdit(e, gradedItem.id)}>
+                      onClick={(e) => handleEdit(e, gradedItem.courseId, gradedItem.id)}>
                       <EditIcon />
                     </IconButton>
                   </TableCell>

@@ -3,12 +3,19 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './routes/Home';
 import EditCourse from './routes/EditCourse';
 import GradedItemsPage from './routes/GradedItemsPage';
+import EditGradedItems from './routes/EditGradedItems';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
+          <Route
+            exact
+            path='/courses/:courseId/gradedItems/edit/:gradedItemId'
+            component={EditGradedItems}
+          />
+
           <Route
             exact
             path='/courses/:id/gradedItems'

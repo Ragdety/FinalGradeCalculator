@@ -2,6 +2,7 @@ import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GradedItemsAPI from '../../apis/GradedItemsAPI';
+import { setLimits } from '../../helpers/helper';
 
 const AddGradedItem = () => {
     const { id } = useParams();
@@ -18,13 +19,6 @@ const AddGradedItem = () => {
         catch (error) {
             console.error(error);
         }
-    }
-
-    const setLimits = (e, val) => {
-        if(val > 100)
-            e.target.value = 100;
-        else if(val < 0)
-            e.target.value = 0;
     }
 
     return (
