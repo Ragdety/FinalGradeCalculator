@@ -16,6 +16,9 @@ https://stackoverflow.com/questions/26968479/404-not-found-or-bad-request
 
 https://stackoverflow.com/questions/34057595/allow-2-decimal-places-in-input-type-number/34057860
 
+Handling 404 errors	
+https://itnext.io/centralizing-api-error-handling-in-react-apps-810b2be1d39d
+
 Whole Series:
 https://www.youtube.com/playlist?list=PL3_YUnRN3Uhi6WH0owikCdLqlK4l60EiT
 
