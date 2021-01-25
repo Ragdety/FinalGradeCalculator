@@ -84,6 +84,7 @@ const GradedItems = () => {
               </TableRow>
             </TableHead>
             <TableBody className="table-dark">
+              {!gradedItems && <p>Loading...</p>}
               {gradedItems.map((gradedItem) => (
                 <TableRow key={gradedItem.id}>
                   <TableCell

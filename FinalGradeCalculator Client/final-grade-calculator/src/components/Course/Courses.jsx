@@ -26,7 +26,8 @@ const Courses = () => {
         }
         catch (error) {
           console.error(error);
-          alert(error);
+          //For now:
+          alert(error + ". Please come back later");
         }
       }
       fetchData();
@@ -82,6 +83,7 @@ const Courses = () => {
             </TableRow>
           </TableHead>
           <TableBody className="table-dark">
+            {!courses && <p>Loading...</p>}
             {courses.map((course) => (
               <TableRow key={course.id}>
                 <TableCell
