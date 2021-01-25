@@ -3,7 +3,7 @@ import GradedItems from '../components/GradedItem/GradedItems';
 import Header from '../components/GradedItem/Header';
 import AddGradedItem from '../components/GradedItem/AddGradedItem';
 
-const EditGradedItems = () => {
+const GradedItemsPage = () => {
     return (
         <div className="container">
             <Header/>
@@ -13,4 +13,4 @@ const EditGradedItems = () => {
     );
 }
 
-export default EditGradedItems;
+export default GradedItemsPage;

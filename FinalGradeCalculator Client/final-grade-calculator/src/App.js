@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './routes/Home';
 import EditCourse from './routes/EditCourse';
-import EditGradedItems from './routes/EditGradedItems';
+import GradedItemsPage from './routes/GradedItemsPage';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           <Route
             exact
             path='/courses/:id/gradedItems'
-            component={EditGradedItems}
+            component={GradedItemsPage}
           />
 
           <Route
