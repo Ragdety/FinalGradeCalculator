@@ -25,7 +25,7 @@ const UpdateGradedItems = () => {
         e.preventDefault();
         try {
             await GradedItemsAPI.put(`/${courseId}/${gradedItemId}`, {
-                Name: name,
+                Name: name.trimEnd(),
                 Grade: grade
             });
             returnBack();
