@@ -12,9 +12,15 @@ const UpdateGradedItems = () => {
 
     useEffect(() => {
         const fetchData = async() => {
-            const response = await GradedItemsAPI.get(`/${courseId}/${gradedItemId}`);
-            setName(response.data.name);
-            setGrade(response.data.grade);
+            try {
+                const response = await GradedItemsAPI.get(`/${courseId}/${gradedItemId}`);
+                setName(response.data.name);
+                setGrade(response.data.grade);
+            } catch (error) {
+                console.error(error);
+                alert(error);
+                goToGradedItems();
+            }
         }
         fetchData();
         //For now:
@@ -28,14 +34,15 @@ const UpdateGradedItems = () => {
                 Name: name.trimEnd(),
                 Grade: grade
             });
-            returnBack();
         } catch (error) {
             console.error(error);
+            alert(error + ': Cannot update item');
         }
+        goToGradedItems()
     }
 
-    const returnBack = () => {
-        history.goBack();
+    const goToGradedItems = () => {
+        history.push(`/courses/${courseId}/gradedItems`);
     }
 
     return (
@@ -79,7 +86,7 @@ const UpdateGradedItems = () => {
                                     className="row"
                                     color="secondary" 
                                     variant="contained"
-                                    onClick={returnBack}
+                                    onClick={goToGradedItems}
                                     >
                                     Go Back
                                 </Button>
