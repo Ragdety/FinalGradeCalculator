@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using FinalGradeCalculator.Data.Models;
 using FinalGradeCalculator.Services;
+using FinalGradeCalculator.Helpers;
 using FinalGradeCalculator.Data.Requests;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace FinalGradeCalculator.Web.Controllers
 {
@@ -126,6 +124,7 @@ namespace FinalGradeCalculator.Web.Controllers
 
             course.Name = courseRequest.Name;
             course.Instructor = courseRequest.Instructor;
+            course.FinalGrade = Calculations.CalculateFinalGrade((IList<GradedItem>)course.GradedItems);
             course.UpdatedOn = now;
 
             var updated = await _courseService.UpdateCourse(course);

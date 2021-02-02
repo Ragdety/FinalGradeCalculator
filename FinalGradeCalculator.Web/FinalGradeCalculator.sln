@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalGradeCalculator.Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalGradeCalculator.Test", "FinalGradeCalculator.Test\FinalGradeCalculator.Test.csproj", "{839912FF-19F0-4852-87B4-9A3D560D3B66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalGradeCalculator.Helpers", "FinalGradeCalculator.Helpers\FinalGradeCalculator.Helpers.csproj", "{9B448F0E-FB6C-4D8A-B45E-390306C9B710}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{839912FF-19F0-4852-87B4-9A3D560D3B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{839912FF-19F0-4852-87B4-9A3D560D3B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{839912FF-19F0-4852-87B4-9A3D560D3B66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B448F0E-FB6C-4D8A-B45E-390306C9B710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B448F0E-FB6C-4D8A-B45E-390306C9B710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B448F0E-FB6C-4D8A-B45E-390306C9B710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B448F0E-FB6C-4D8A-B45E-390306C9B710}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
