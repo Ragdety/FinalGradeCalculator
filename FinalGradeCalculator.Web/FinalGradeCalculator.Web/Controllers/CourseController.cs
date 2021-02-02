@@ -124,11 +124,6 @@ namespace FinalGradeCalculator.Web.Controllers
 
             course.Name = courseRequest.Name;
             course.Instructor = courseRequest.Instructor;
-
-            _logger.LogInformation("About to calculate final grade");
-            course.FinalGrade = Calculations.CalculateFinalGrade(course.GradedItems);
-            _logger.LogInformation("Calculated final grade");
-
             course.UpdatedOn = now;
 
             var updated = await _courseService.UpdateCourse(course);

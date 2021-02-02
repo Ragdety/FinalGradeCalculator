@@ -1,5 +1,6 @@
 ﻿using FinalGradeCalculator.Data;
 using FinalGradeCalculator.Data.Models;
+using FinalGradeCalculator.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace FinalGradeCalculator.Services
         {
             await ValidateCourse(courseId);
             await _db.GradedItems.AddAsync(gradedItem);
+            await UpdateFinalGrade(courseId);
             await _db.SaveChangesAsync();
         }
 
@@ -40,6 +42,7 @@ namespace FinalGradeCalculator.Services
 
             _db.GradedItems.Remove(gradedItem);
             await _db.SaveChangesAsync();
+            await UpdateFinalGrade(courseId);
         }
 
         public async Task<IList<GradedItem>> GetAllGradedItemsFromCourse(int courseId)
@@ -65,8 +68,8 @@ namespace FinalGradeCalculator.Services
         public async Task<bool> UpdateGradedItemFromCourse(int courseId, GradedItem gradedItemToUpdate)
         {
             await ValidateCourse(courseId);
-
             _db.GradedItems.Update(gradedItemToUpdate);
+            await UpdateFinalGrade(courseId);
             var updated = await _db.SaveChangesAsync();
             return updated > 0;
         }
@@ -78,6 +81,19 @@ namespace FinalGradeCalculator.Services
             if (course == null)
                 throw new InvalidOperationException(
                     $"No course exists with id {courseId}");
+        }
+
+        private async Task UpdateFinalGrade(int courseId)
+        {
+            await ValidateCourse(courseId);
+            var now = DateTime.UtcNow;
+            var course = await _courseService.GetCourse(courseId);
+
+            course.FinalGrade = Calculations.CalculateFinalGrade(course.GradedItems);
+            course.UpdatedOn = now;
+            
+            await _courseService.UpdateCourse(course);
+            await _db.SaveChangesAsync();
         }
     }
 }

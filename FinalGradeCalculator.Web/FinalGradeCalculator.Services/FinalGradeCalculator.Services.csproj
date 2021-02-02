@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinalGradeCalculator.Data\FinalGradeCalculator.Data.csproj" />
+    <ProjectReference Include="..\FinalGradeCalculator.Helpers\FinalGradeCalculator.Helpers.csproj" />
   </ItemGroup>
 
 </Project>
