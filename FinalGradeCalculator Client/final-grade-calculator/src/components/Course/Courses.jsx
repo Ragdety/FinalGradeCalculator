@@ -94,7 +94,7 @@ const Courses = () => {
                   className="text-white">{course.instructor}</TableCell>
                 <TableCell
                   className="text-white">
-                  {course.finalGrade === null ? 'To be determined' : course.finalGrade}
+                  {course.finalGrade === null ? 'To be determined' : course.finalGrade.toFixed(2)}
                 </TableCell>
                 <TableCell 
                   className="text-white"
